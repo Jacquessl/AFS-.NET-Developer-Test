@@ -14,9 +14,17 @@ public class TranslatorController : ControllerBase
         _translatorRepository = translatorRepository;
     }
     
-    [HttpGet("{text}")]
-    public async Task<IActionResult> Translate([StringLength(200, ErrorMessage = "Text cannot exceed 200 characters.")] string text)
+    [HttpGet("{text?}")]
+    public async Task<IActionResult> Translate(string? text)
     {
+        if (string.IsNullOrEmpty(text))
+        {
+            text = "There is no text to translate";
+        }
+        if (text.Length > 200)
+        {
+            text = "Text cannot exceed 200 characters";
+        }
         string result;
         if((result = await _translatorRepository.GetTranslationIfExists(text)) is not null)
         {

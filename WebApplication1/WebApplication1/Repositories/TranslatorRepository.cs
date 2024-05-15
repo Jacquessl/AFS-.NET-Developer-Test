@@ -14,7 +14,7 @@ public class TranslatorRepository : ITranslatorRepository
     {
         _configuration = configuration;
     }
-    async public Task<string> GetTranslation(string text)
+    async public Task<string> GetTranslation(string text)   
     {
         string url = "https://api.funtranslations.com/translate/leetspeak.json";
         using (HttpClient httpClient = new HttpClient())
