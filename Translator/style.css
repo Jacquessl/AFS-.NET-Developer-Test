@@ -1,0 +1,127 @@
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #171717;
+}
+
+.container { 
+    background-color: #212121;
+    padding: 5%;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+button {
+  padding: 17px 40px;
+  border-radius: 10px;
+  border: 0;
+  background-color: #FF3856;
+  letter-spacing: 1.5px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: #C92E46 0px 10px 0px 0px;
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover {
+  box-shadow: rgb(201, 46, 70) 0px 7px 0px 0px;
+}
+
+button:active {
+  background-color: #FF3856;
+  box-shadow: #C92E46 0px 0px 0px 0px;
+  transform: translateY(5px);
+  transition: 200ms;
+}
+
+#responseContainer {
+    visibility: hidden;
+    opacity: 0;
+    margin-top: 40px;
+    font-size: 18px;
+    color: #fff;
+    transition: opacity 0.5s; 
+}
+#responseContainer.show {
+    visibility: visible;
+    opacity: 1;
+}
+.form_group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    max-width: 100%;
+}
+  
+.form_field {
+    font-family: inherit;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 17px;
+    color: #fff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+
+.form_field::placeholder {
+    color: transparent;
+}
+
+.form_field:placeholder-shown ~ .form_label {
+    font-size: 17px;
+    cursor: text;
+    top: 20px;
+}
+
+.form_label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #9b9b9b;
+    pointer-events: none;
+}
+
+.form_field:focus {
+    padding-bottom: 6px;
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, #910016, #FF3856);
+    border-image-slice: 1;
+}
+
+.form_field:focus ~ .form_label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 17px;
+    color: #FF3856;
+    font-weight: 700;
+}
+
+.form_field:required, .form_field:invalid {
+    box-shadow: none;
+}

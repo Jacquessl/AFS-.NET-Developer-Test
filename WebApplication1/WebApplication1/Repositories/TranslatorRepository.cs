@@ -40,7 +40,7 @@ public class TranslatorRepository : ITranslatorRepository
                 }
                 else
                 {
-                    return $"Błąd: {response.StatusCode}";
+                    return $"Error: {response.StatusCode}";
                 }
             }
             catch (Exception ex)

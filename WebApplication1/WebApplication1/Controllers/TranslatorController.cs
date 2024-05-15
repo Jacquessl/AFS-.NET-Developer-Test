@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Repositories;
@@ -14,7 +15,7 @@ public class TranslatorController : ControllerBase
     }
     
     [HttpGet("{text}")]
-    public async Task<IActionResult> Translate(string text)
+    public async Task<IActionResult> Translate([StringLength(200, ErrorMessage = "Text cannot exceed 200 characters.")] string text)
     {
         string result;
         if((result = await _translatorRepository.GetTranslationIfExists(text)) is not null)
@@ -22,7 +23,11 @@ public class TranslatorController : ControllerBase
             return Ok(result);
         }
         var response = await _translatorRepository.GetTranslation(text);
-        await _translatorRepository.AddTranslation(text, response);
+        if (!response.Contains("Error"))
+        {
+            await _translatorRepository.AddTranslation(text, response);
+        }
+
         return Ok(response);
         
     }
