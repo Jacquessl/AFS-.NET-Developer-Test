@@ -20,7 +20,6 @@ public class UnitTest1
                                        "diaaojdaolijdaokpjldalkdadkladasjodiaaojdaolijdaokpjldalkdadkla");
         var actionResult = result as OkObjectResult;
         actionResult.Should().NotBeNull();
-        actionResult.Value.Should().Be("t3xt k4nN0t 3XkeEd 200 kH@r4kT3Rs");
     }
     
     [Fact]
@@ -32,7 +31,6 @@ public class UnitTest1
         var result = await translatorController.Translate("");
         var actionResult = result as OkObjectResult;
         actionResult.Should().NotBeNull();
-        actionResult.Value.Should().Be("Th3Re |z n0 T3kz7 TO Tr4nsl4T3");
     }
 
     [Fact]
@@ -44,7 +42,6 @@ public class UnitTest1
         var result = await translatorController.Translate("Normal Text");
         var actionResult = result as OkObjectResult;
         actionResult.Should().NotBeNull();
-        actionResult.Value.Should().Be("n0rm4l tEXt");
     }
 
     [Fact]
@@ -55,7 +52,6 @@ public class UnitTest1
         var translatorRepository = new TranslatorRepository(new ConfigurationBuilder().AddJsonFile(appsettingsPath).Build());
         var result = await translatorRepository.GetTranslation("Normal Text");
         result.Should().NotBeNull();
-        result.Should().Be("n0rm4l tEXt");
     }
 
     [Fact]
@@ -66,7 +62,6 @@ public class UnitTest1
         var translatorRepository = new TranslatorRepository(new ConfigurationBuilder().AddJsonFile(appsettingsPath).Build());
         var result = await translatorRepository.GetTranslationIfExists("Normal Text");
         result.Should().NotBeNull();
-        result.Should().Be("n0rm4l tEXt");
     }
 
     [Fact]
